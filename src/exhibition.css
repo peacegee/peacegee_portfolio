@@ -1,0 +1,52 @@
+.exhibit-page{background:var(--paper);color:var(--ink)}
+.exhibit-opening{display:grid;grid-template-columns:1.05fr 1fr;align-items:stretch;min-height:calc(100svh - 62px)}
+.exhibit-stage{position:sticky;top:62px;align-self:start;min-height:calc(100svh - 62px);isolation:isolate;overflow:hidden;display:grid;align-content:center;justify-items:center;background:radial-gradient(ellipse at 50% 47%,color-mix(in srgb,var(--feature-color) 38%,#0a1d2a) 0%,#091924 48%,#040f19 87%);color:#d8e6e6}
+.exhibit-stage::before{content:'';position:absolute;inset:0;z-index:-1;background:url('/media/galaxy.webp') center/cover;opacity:.37}
+.exhibit-stage>.mono{position:absolute;left:25px;bottom:24px}
+.exhibit-portrait{width:min(100%,730px);height:min(70svh,590px);position:relative;display:grid;place-items:center}
+.exhibit-portrait canvas{position:absolute;inset:0;width:100%;height:100%}
+.portrait-orbit{position:absolute;width:78%;height:27%;border:1px solid #c4dade44;border-radius:50%;transform:rotate(-22deg);box-shadow:0 0 25px #c1d9e319}
+.exhibit-sphere,.flight-globe{width:57%;aspect-ratio:1;border-radius:50%;position:relative;background:radial-gradient(circle at 31% 26%,#ffedc86b,transparent 53%),repeating-linear-gradient(165deg,#fff2 0 8px,#0001 11px 24px),var(--feature-color);box-shadow:inset -40px -12px 66px #050c17be,0 0 42px color-mix(in srgb,var(--feature-color),transparent 68%)}
+.exhibit-sphere[data-ring=true]::after{content:'';position:absolute;inset:36% -31%;border:6px double #dbc39ab3;border-radius:50%;transform:rotate(-22deg)}
+.exhibit-intro{align-self:center;padding:clamp(23px,5.8vw,90px);max-width:900px}
+.exhibit-intro>.mono{color:var(--muted)}
+.exhibit-intro h1{width:auto;color:inherit;text-transform:none;font:400 clamp(2.55rem,6vw,7rem)/.91 Georgia,serif;letter-spacing:-.067em;overflow-wrap:anywhere;margin:12px 0 21px}
+.exhibit-lead{font-size:clamp(1rem,1.6vw,1.4rem);line-height:1.35}
+.exhibit-context{color:var(--muted);line-height:1.5;margin-top:10px}
+.exhibit-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:18px}
+.exhibit-actions :is(a,button),.exhibit-technologies button{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);color:var(--ink);font:inherit;padding:8px 11px}
+.exhibit-actions button img{width:42px;height:28px;object-fit:cover}
+.exhibit-actions :is(a,button):hover,.exhibit-technologies button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.exhibit-body{width:min(86%,1050px);margin:auto;padding:clamp(55px,9vw,130px) 0}
+.exhibit-chapter{padding:clamp(25px,5vw,58px) 0;border-top:1px solid var(--line)}
+.exhibit-chapter h2{font:400 clamp(2rem,5vw,4.8rem)/.93 Georgia,serif;letter-spacing:-.055em;margin-bottom:19px}
+.exhibit-chapter p,.exhibit-tech-info dd{color:var(--muted);line-height:1.55}
+.exhibit-flow,.exhibit-technologies{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.exhibit-flow button{position:relative;display:flex;align-items:center;gap:9px;padding:12px 13px;border:0;border-bottom:1px solid var(--line);color:var(--ink);background:none;font:inherit;text-align:left;transition:border-color .3s}
+.exhibit-flow button span{width:8px;height:8px;border:1px solid var(--ink);border-radius:50%;transition:box-shadow .35s,background .35s}
+.exhibit-flow button[aria-pressed=true]{border-bottom-color:var(--ink)}
+.exhibit-flow button[aria-pressed=true] span{background:var(--feature-color);box-shadow:0 0 13px var(--feature-color)}
+.exhibit-explanation{min-height:2.8em}
+.exhibit-tech-info{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.exhibit-tech-info dt{font-weight:700}.exhibit-tech-info dd{margin:4px 0 0}
+.exhibit-code pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:clamp(12px,3vw,30px);background:#0b1b25;color:#e5edf0;border:1px solid #425965;font-size:clamp(.74rem,1.4vw,.98rem);line-height:1.7}
+.exhibit-code .keyword{color:#ffcf99}.exhibit-code .string{color:#aadbb0}.exhibit-code .number{color:#a8d6f5}.exhibit-code .comment{color:#a6b6bf}.code-source{margin-top:10px}
+.exhibit-gallery button{display:block;width:100%;border:0;padding:0;overflow:hidden;background:#0d1c27}
+.exhibit-gallery img{display:block;width:100%;max-height:70svh;object-fit:contain}
+.exhibit-gallery figcaption{margin-top:9px;color:var(--muted);font-size:.86rem}
+.exhibit-lightbox[open]{position:fixed;inset:0;max-width:96vw;width:fit-content;padding:13px;background:#0d1c27;color:#edf5ef}
+.exhibit-lightbox img{max-width:90vw;width:auto;max-height:78dvh;object-fit:contain;margin:auto}.exhibit-lightbox button{margin-bottom:8px}
+.solar-section[data-travel=true] .solar-sky{filter:brightness(.46)}
+.solar-section[data-travel=true] .planet-button[data-active=false]{opacity:.28;transition:opacity .55s}
+.exhibit-flight:not(.returning){animation-duration:.98s}
+.exhibit-flight:not(.returning) img{animation:exhibit-image .98s ease both;position:relative;z-index:1}
+.flight-globe{position:absolute;top:var(--fy);left:var(--fx);width:9vmin;transform:translate(-50%,-50%);--feature-color:var(--flight-color);animation:exhibit-approach .98s cubic-bezier(.23,.63,.23,1) both}
+.exhibit-flight.returning .flight-globe{animation-direction:reverse;animation-duration:.67s}
+@keyframes exhibit-approach{0%{scale:.7;filter:brightness(1.6)}75%{scale:16;opacity:1}100%{scale:28;opacity:0}}
+@keyframes exhibit-image{0%,54%{opacity:0;transform:scale(1.14)}100%{opacity:1;transform:none}}
+@media(max-width:720px){.exhibit-opening{grid-template-columns:1fr;min-height:auto}.exhibit-stage{position:relative;top:auto;min-height:30svh}.exhibit-portrait{height:31svh}.exhibit-sphere{width:min(40%,155px)}.exhibit-stage>.mono{left:15px;bottom:9px}.exhibit-intro{padding:20px 7vw 35px}.exhibit-intro h1{margin:8px 0 11px}.exhibit-tech-info{grid-template-columns:1fr}}
+.exhibit-flow button:not(:last-child)::after{content:'';position:absolute;left:100%;width:8px;height:1px;background:var(--line);pointer-events:none}
+.exhibit-flow button[data-reached=true]:not(:last-child)::after{background:var(--feature-color);box-shadow:0 0 9px var(--feature-color);transition:background .3s,box-shadow .3s}
+.exhibit-flow button:has(+button[data-reached=false])::after{background:var(--line);box-shadow:none}
+.exhibit-sphere{animation:portrait-breathe 8s ease-in-out infinite}
+@keyframes portrait-breathe{50%{filter:brightness(1.1);transform:rotate(1.2deg)}}
+@media(prefers-reduced-motion:reduce){.exhibit-sphere{animation:none}}

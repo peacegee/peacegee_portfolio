@@ -1,0 +1,1 @@
+export const asphaltTrack = "function posOf(s,o){const i=Math.floor(s)%N,f=s-Math.floor(s),j=(i+1)%N;return{x:CX[i]+(CX[j]-CX[i])*f+TZ[i]*o,z:CZ[i]+(CZ[j]-CZ[i])*f-TX[i]*o,h:Math.atan2(TX[i],TZ[i]),i}}"
