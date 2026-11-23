@@ -25,9 +25,13 @@ export const exhibitions = {
     credit:'CodeSpring logo.',
   },
   'academic-research': {
-    context:'2026 research conference participation, recorded in the CV.',
-    flow:[step('Organizer','Bank of Mongolia.'),step('Event','2026 research conference.'),step('Record','Conference participation is documented in the CV.')],
-    credit:'Thematic data illustration.',
+    context:'A 2026 study of investor behavioral risk and the potential of AI-based algorithmic trading in Mongolia.',
+    flow:[
+      step('Investor behavior','Loss aversion, impulse investing, and herding can influence individual investment decisions.'),
+      step('Mongolian market','The analysis considers the TOP-20 index, trading volume, market liquidity, and international comparisons.'),
+      step('AI and algorithms','Data-driven algorithmic trading may help reduce emotion-driven investment risk.'),
+    ],
+    credit:'Research Conference Certificate of Appreciation.',
   },
   'personal-portfolio': {
     context:'Bring projects, research and achievements into one navigable digital exhibition.',
@@ -49,7 +53,7 @@ export const exhibitions = {
       step('Faculty','Find information about the department?s faculty.'),
     ],
   },
-  'smart-recycling-app-m-bank-competition': {context:'An app project that approached the problem of waste recycling. It received first place at the 2025 M Bank competition.',flow:[step('Problem','Waste recycling.'),step('Response','A student app project.'),step('Result','First place at the M Bank competition.')],credit:'Thematic illustration inspired by recycling.'},
+  'smart-recycling-app-m-bank-competition': {context:'The Green Pyramid project addresses waste reduction and recycling.',flow:[step('Project','Green Pyramid.'),step('Theme','Reuse, reduce and recycle.'),step('Recognition','Award for the Green Pyramid project.')],credit:'Award photo and printed Green Pyramid poster.'},
   'national-programming-olympiad': {context:'I represented the University of Finance and Economics at the 33rd National Programming Olympiad.',flow:[step('University','University of Finance and Economics.'),step('Event','33rd National Programming Olympiad.'),step('Record','2025 participation certificate.')],credit:'Olympiad certificate.'},
   'accelerated-coding-course': {context:'I completed the one-year accelerated coding program at IO Institute and the University of Finance and Economics.',flow:[step('Program','Accelerated Coding Course.'),step('Duration','One year.'),step('Completion','Recorded in the 2024 certificate.')],credit:'Course certificate.'},
   'rector-s-scholarship': {context:'I received the Rector’s Scholarship at the University of Finance and Economics in 2025.',flow:[step('Institution','University of Finance and Economics.'),step('Recognition','Rector’s Scholarship.'),step('Year','2025.')]},

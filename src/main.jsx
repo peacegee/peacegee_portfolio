@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './style.css'
 import { Atmosphere, Sound, initialTheme } from './World.jsx'
 import { Galaxy } from './Galaxy.jsx'
+import { Awards } from './Awards.jsx'
+import { ProjectsSection } from './ProjectsSection.jsx'
 import { LanguageProvider, LanguageSwitcher, useLanguage } from './Language.jsx'
 
 const github = import.meta.env.VITE_GITHUB_URL || "https://github.com/peacegee"
@@ -86,6 +88,8 @@ function App() {
         </section>
 
         <Galaxy theme={theme} setTheme={setTheme} />
+        <Awards />
+        <ProjectsSection />
 
         <section id="about" className="shell about" aria-labelledby="about-title">
           <div className="about-heading" data-reveal>

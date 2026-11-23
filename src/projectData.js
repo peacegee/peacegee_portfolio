@@ -3,11 +3,21 @@ export const projects = [
     title: 'Asphalt Night', category: 'Automotive web experience', theme: 'asphalt', image: 'asphalt.webp',
     description: 'An automotive web experience that takes its visual cues from night drives and street-car culture.',
     notes: 'The visual direction uses low light, deep contrast and automotive photography to evoke a late-night garage.', action: 'Enter the garage', url: 'https://asphaltnight.vercel.app/',
+    gallery: [
+      { src: 'asphalt-car-selection.png', caption: ['Car selection and start screen', 'Машин сонгох, эхлүүлэх дэлгэц'] },
+      { src: 'asphalt-drifting.png', caption: ['In-game drifting', 'Тоглоом доторх дрифт'] },
+    ],
   },
   { id: 'home-decor', featuredProject: true,
     title: 'Home Decor', category: 'Interior design website', theme: 'decor', image: 'decor.webp',
     description: 'A home decor website that puts interiors, materials and visual browsing front and center.',
     notes: 'The visual direction uses warm neutrals, natural light and large interior photographs to keep attention on the spaces.', action: 'Explore the site', url: 'https://homedecor-ruby.vercel.app/',
+    gallery: [
+      { src: 'home-decor-landing.png', caption: ['Landing page · vase and branches', 'Нүүр хуудас · ваар, мөчир'] },
+      { src: 'home-decor-featured.png', caption: ['Featured furniture collection', 'Онцлох тавилгын цуглуулга'] },
+      { src: 'home-decor-wall-decor.png', caption: ['Wall décor collection', 'Ханын чимэглэлийн цуглуулга'] },
+      { src: 'home-decor-supplier-research.png', caption: ['Supplier research', 'Нийлүүлэгчийн судалгаа'] },
+    ],
   },
   { id: 'coding-course-registration',
     title: 'Coding Course Registration', category: 'Hybrid learning platform', theme: 'courses', preview: 'codespring.svg',
@@ -17,11 +27,21 @@ export const projects = [
     action: 'Open the training website', url: 'https://frontend-five-steel-rmav3cua9k.vercel.app/',
   },
   { id: 'academic-research',
-    title: 'Academic Research', category: 'Bank of Mongolia Research Conference · 2026', theme: 'research', preview: 'data.webp',
-    description: 'Research conference participation listed in my CV for 2026.',
-    notesTitle: 'Conference',
-    notes: 'The Bank of Mongolia organized the 2026 research conference.',
-    action: 'View research details',
+    title: 'Investor Psychology Risk and Artificial Intelligence',
+    category: 'Investment and AI Development Opportunities · Research Conference 2026',
+    theme: 'research',
+    preview: 'research-conference-certificate.png',
+    certificate: true,
+    researchTopic: ['Investment and AI Development Opportunities', 'Хөрөнгө оруулалт ба Хиймэл Оюун ухааны хөгжлийн боломжууд'],
+    authors: ['Б. Энхжин', 'Г. Дөлгөөн', 'Г. Энхмэнд'],
+    researchPaper: 'research-investment-ai.pdf',
+    description: 'A study of how loss aversion, impulse investing, and herding affect individual investors in Mongolia, and how AI-based algorithmic trading may help reduce emotion-driven risk.',
+    notesTitle: 'Research summary',
+    notes: 'The paper examines Mongolia’s low-liquidity stock market using the TOP-20 index, trading volume, and comparisons with major international markets. It discusses data-driven algorithmic trading as a way to reduce behavioral bias in investment decisions.',
+    action: 'Read the research',
+    gallery: [
+      { src: 'research-conference-certificate.png', caption: ['Research Conference Certificate of Appreciation', 'Эрдэм шинжилгээний хурлын талархал'] },
+    ],
   },
   { id: 'personal-portfolio',
     title: 'Personal Portfolio', category: 'SWE334 · React and Vite', theme: 'portfolio', preview: 'portfolio-screen.webp',
@@ -35,12 +55,57 @@ export const projects = [
     description: 'A digital museum showcasing the Information Systems Management (ISM) department, student work, and faculty information.',
     action: 'Visit the museum',
     url: 'https://is-mmuseum-xh2t.vercel.app/',
+    gallery: [
+      { src: 'ism-museum-landing.png', caption: ['Museum landing page', 'Музейн нүүр хуудас'] },
+      { src: 'ism-student-projects.png', caption: ['Student projects', 'Оюутны бүтээлүүд'] },
+      { src: 'ism-faculty.png', caption: ['Faculty listing', 'Багш нарын жагсаалт'] },
+      { src: 'ism-event-cards.png', caption: ['Event cards', 'Арга хэмжээний картууд'] },
+      { src: 'ism-archive-2024.png', caption: ['Chronological archive · 2024', 'Он цагийн архив · 2024'] },
+      { src: 'ism-archive-older.png', caption: ['Chronological archive · earlier years', 'Он цагийн архив · өмнөх онууд'] },
+    ],
   },
 ]
 
 export const credentials = [
-  { id: 'smart-recycling-app-m-bank-competition', title: 'Smart Recycling App · M Bank Competition', date: '2025', text: 'First place for a student app project focused on recycling.', image: 'recycle.webp' },
+  { id: 'smart-recycling-app-m-bank-competition', title: 'Green Pyramid', category: 'Recycling project', achievement: true, text: 'Award for the Green Pyramid project.', image: 'recycling.webp', gallery: [
+    { src: 'recycling.webp', caption: ['Award for the Green Pyramid project.', 'Green Pyramid бүтээлээр оролцсон уралдааны шагнал.'], alt: ['Green Pyramid award photo with the project poster and prize board', 'Green Pyramid постер болон шагналын самбарын хамт авахуулсан зураг'] },
+    { src: 'green-pyramid-printed-poster.png', caption: ['Printed Green Pyramid poster', 'Green Pyramid-ийн хэвлэмэл постер'], alt: ['Printed Green Pyramid event poster', 'Green Pyramid арга хэмжээний хэвлэмэл постер'] },
+  ] },
   { id: 'national-programming-olympiad', title: 'National Programming Olympiad', date: '2025', certificate: true, text: 'Represented the University of Finance and Economics at the 33rd National Programming Olympiad.', image: 'olympiad.webp' },
   { id: 'accelerated-coding-course', title: 'Accelerated Coding Course', date: '2024', certificate: true, text: 'Completed a one-year program at IO Institute and the University of Finance and Economics.', image: 'coding.webp' },
-  { id: 'rector-s-scholarship', title: 'Rector’s Scholarship', date: '2025', text: 'Received the Rector’s Scholarship at the University of Finance and Economics.' },
+  { id: 'rector-s-scholarship', title: 'Rector’s Scholarship', date: '2025', certificate: true, image: 'rector-scholarship-certificate.png', text: 'Received the Rector’s Scholarship at the University of Finance and Economics.' },
+]
+
+export const awards = [
+  {
+    id: 'green-pyramid-competition',
+    title: 'Project Competition',
+    project: 'Green Pyramid',
+    text: 'Award for the Green Pyramid project.',
+    images: [
+      {
+        src: 'recycling.webp',
+        alt: ['Green Pyramid award photo with the project poster and prize board', 'Green Pyramid постер болон шагналын самбарын хамт авахуулсан зураг'],
+        caption: ['Award for the Green Pyramid project.', 'Green Pyramid бүтээлээр оролцсон уралдааны шагнал.'],
+      },
+      {
+        src: 'green-pyramid-printed-poster.png',
+        alt: ['Printed Green Pyramid event poster', 'Green Pyramid арга хэмжээний хэвлэмэл постер'],
+        caption: ['Printed Green Pyramid poster', 'Green Pyramid-ийн хэвлэмэл постер'],
+      },
+    ],
+  },
+  {
+    id: 'research-conference-certificate',
+    title: 'Research Conference Certificate of Appreciation',
+    text: 'Certificate of Appreciation for research conference participation.',
+    certificate: true,
+    images: [
+      {
+        src: 'research-conference-certificate.png',
+        alt: ['Blue-and-gold Mongolian certificate headed ТАЛАРХАЛ', 'ТАЛАРХАЛ гарчигтай цэнхэр, алтлаг Монгол гэрчилгээ'],
+        caption: ['Research Conference Certificate of Appreciation', 'Эрдэм шинжилгээний хурлын талархал'],
+      },
+    ],
+  },
 ]

@@ -12,7 +12,7 @@ const palettes=['#cc825d','#d5b682','#619b88','#608cae','#8caebd','#a28ddd','#6c
 const desktop=[[.33,.26],[.57,.22],[.73,.32],[.81,.56],[.70,.75],[.47,.79],[.24,.69],[.12,.49],[.15,.28],[.89,.23]]
 const mobile=[[.19,.23],[.53,.23],[.82,.24],[.82,.40],[.83,.59],[.83,.76],[.50,.80],[.17,.77],[.16,.59],[.16,.41]]
 const radii=[25,34,25,31,25,25,29,23,24,21]
-const media='/media/'
+const media=`${import.meta.env.BASE_URL}media/`
 const reduced=matchMedia('(prefers-reduced-motion: reduce)')
 const readPlanet=()=>new URLSearchParams(location.search).get('planet')
 
@@ -26,8 +26,8 @@ export function Galaxy({theme,setTheme}){
   const {language,t} = useLanguage()
   const items = records.map(record => {
     const project = language === 'mn' ? {...record, ...mongolianProjects[record.id]} : record
-    return project.date
-      ? {...project, description: project.text, category: project.date+' · '+t('achievement')}
+    return project.date || project.achievement
+      ? {...project, description: project.text, category: project.date ? project.date+' · '+t('achievement') : project.category||t('achievement')}
       : project
   })
   const [focused,setFocused]=useState(null)
