@@ -68,7 +68,7 @@ export function PlanetExhibition({project,index,total,theme,setTheme,surface,hea
     <div className="exhibit-opening">
       <div className="exhibit-stage"><Portrait color={project.color} index={index}/><p className="mono">{t('planet')} {String(index+1).padStart(2,'0')} / {total}</p></div>
       <div className="exhibit-intro">
-        <p className="mono">{project.category}</p>
+        <p className="mono">{project.featuredProject&&<><span className="planet-project-label">{t('project')}</span>{' '}</>}{project.category}</p>
         <h1 ref={heading} tabIndex="-1" id="planet-heading">{project.title}</h1>
         <p className="exhibit-lead">{project.description}</p>
         {data.context!==project.description&&<p className="exhibit-context">{data.context}</p>}

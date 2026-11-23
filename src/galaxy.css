@@ -77,3 +77,9 @@
   .solar-section{top:80px}
 }
 @media(max-width:520px) and (prefers-reduced-motion:reduce){.solar-section{top:0}}
+
+.planet-project-label{display:inline-block;border:1px solid currentColor;border-radius:2px;padding:1px 4px;font:700 .62rem/1.2 var(--mono);text-transform:uppercase;text-shadow:none;letter-spacing:.025em}
+.planet-caption .planet-project-label{margin-inline-start:4px;background:#10232e;color:#f0e4c8}
+[data-theme=day] .planet-caption .planet-project-label{background:#f1eee4;color:#263d40}
+.solar-preview .planet-project-label{margin-inline-end:6px;color:#f0e4c8}
+.exhibit-intro .planet-project-label{margin-inline-end:3px;color:var(--ink)}

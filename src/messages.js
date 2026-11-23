@@ -42,6 +42,8 @@ export const messages = {
   mute: ['Mute ambience', 'Орчны дууг хаах'],
   play: ['Play ambience', 'Орчны дууг тоглуулах'],
   volume: ['Ambience volume', 'Орчны дууны түвшин'],
+  project: ['Project', 'Төсөл'],
+  viewProject: ['View Project', 'Төсөл үзэх'],
   achievement: ['Achievement', 'Амжилт'],
   solarTitle: ['Personal Solar System', 'Миний нарны аймаг'],
   enter: ['Enter planet', 'Гарагт зочлох'],
