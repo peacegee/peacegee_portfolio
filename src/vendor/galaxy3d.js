@@ -54,7 +54,7 @@ export function mount(host, config, colors, ready) {
     }
     shell.rotation.z=(index-4)*.11
     cluster.add(shell);world.add(cluster)
-    if(index===1||index===7){
+    if(index===1||index===6){
       for(let j=0;j<7;j++){
         const ring=new T.Mesh(new T.RingGeometry(1.16+j*.10,1.23+j*.10,64),new T.MeshBasicMaterial({color:j%2?'#b7aaa0':'#e2c9a6',side:T.DoubleSide,transparent:true,opacity:.19+j*.046,depthWrite:false}))
         ring.rotation.set(1.12,.18,-.25);cluster.add(ring)
@@ -189,7 +189,7 @@ export function mountPortrait(host, color, index, onReady) {
   const group=new T.Group()
   group.add(planet);scene.add(group)
   const ring=new T.Group()
-  if(index===1||index===7){
+  if(index===1||index===6){
     for(let j=0;j<7;j++){
       const band=new T.Mesh(new T.RingGeometry(1.16+j*.10,1.23+j*.10,64),new T.MeshBasicMaterial({color:j%2?'#b7aaa0':'#e2c9a6',side:T.DoubleSide,transparent:true,opacity:.19+j*.046,depthWrite:false}))
       ring.add(band)

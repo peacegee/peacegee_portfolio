@@ -58,15 +58,6 @@ export const mongolianExhibitions = {
     ],
     credit: 'Портфолионы дэлгэцийн зураг.',
   },
-  'student-project-competition': {
-    context: 'Би Team Waffle багийн гишүүнээр оролцсон. Pyramid төсөл 2026 оны гуравдугаар сарын 26-нд СЭЗИС-д тэргүүн байр эзэлсэн.',
-    flow: [
-      step('Team Waffle', 'Pyramid төслийг бүтээсэн баг.'),
-      step('Pyramid', 'Уралдаанд танилцуулсан төсөл.'),
-      step('Тэргүүн байр', 'СЭЗИС-ийн Оюутны төслийн уралдаанд авсан шагнал.'),
-    ],
-    credit: 'Уралдааны баримт.',
-  },
   'smart-recycling-app-m-bank-competition': {
     context: 'Хог хаягдлыг дахин боловсруулах асуудлыг хөндсөн аппын төсөл. 2025 оны M Bank-ийн тэмцээнд тэргүүн байр эзэлсэн.',
     flow: [

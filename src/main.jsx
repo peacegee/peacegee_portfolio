@@ -10,6 +10,11 @@ const instagram = import.meta.env.VITE_INSTAGRAM_URL || 'https://www.instagram.c
 
 function App() {
   const {t} = useLanguage()
+  const skillGroups = [
+    {heading: 'skillsWeb', detail: 'skillsWebDetail', tools: ['JavaScript', 'React', 'HTML & CSS', 'Vite', 'Three.js', 'GSAP']},
+    {heading: 'skillsData', detail: 'skillsDataDetail', tools: ['SQL Server', 'Excel', t('dataCleaning'), t('dataValidation')]},
+    {heading: 'skillsCode', detail: 'skillsCodeDetail', tools: ['C#', t('teamwork')]},
+  ]
   const email = 'enkhmend926@gmail.com'
   const [copyStatus, setCopyStatus] = React.useState('')
   async function copyEmail() {
@@ -90,7 +95,17 @@ function App() {
           </div>
           <div className="about-details" data-reveal>
             <h3>{t('skills')}</h3>
-            <ul className="chips">{['JavaScript', 'React', 'HTML & CSS', 'C#', 'SQL Server', 'Excel', t('dataCleaning'), t('teamwork')].map((item, i) => <li key={i}>{item}</li>)}</ul>
+            <ul className="skill-groups">
+              {skillGroups.map(({heading, detail, tools}) => (
+                <li className="skill-group" key={heading}>
+                  <h4>{t(heading)}</h4>
+                  <p>{t(detail)}</p>
+                  <ul className="chips">
+                    {tools.map(tool => <li key={tool}>{tool}</li>)}
+                  </ul>
+                </li>
+              ))}
+            </ul>
             <h3>{t('interests')}</h3>
             <dl className="interests">
               <div><dt>{t('swimming')}</dt><dd>{t('swimmer')}</dd></div>

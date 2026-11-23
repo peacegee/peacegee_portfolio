@@ -22,7 +22,7 @@ function Portrait({color,index}){
   },[color,index])
   return <div className="exhibit-portrait" ref={host} aria-hidden="true">
     <span className="portrait-orbit"/>
-    {!ready&&<span className="exhibit-sphere" data-ring={index===1||index===7}/>}
+    {!ready&&<span className="exhibit-sphere" data-ring={index===1||index===6}/>}
   </div>
 }
 

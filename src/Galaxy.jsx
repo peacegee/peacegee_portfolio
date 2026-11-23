@@ -8,10 +8,10 @@ import {useLanguage} from './Language.jsx'
 import {projects, credentials} from './projectData.js'
 import {mongolianProjects} from './projects.mn.js'
 
-const palettes=['#cc825d','#d5b682','#619b88','#608cae','#8caebd','#b47e54','#6caa86','#9d8268','#92b4c9','#c0a26a']
-const desktop=[[.33,.26],[.57,.22],[.73,.32],[.81,.56],[.70,.75],[.47,.79],[.24,.69],[.12,.49],[.15,.28],[.89,.23]]
-const mobile=[[.19,.23],[.53,.23],[.82,.24],[.82,.40],[.83,.59],[.83,.76],[.50,.80],[.17,.77],[.16,.59],[.16,.41]]
-const radii=[25,34,25,31,25,25,29,23,24,21]
+const palettes=['#cc825d','#d5b682','#619b88','#608cae','#8caebd','#6caa86','#9d8268','#92b4c9','#c0a26a']
+const desktop=[[.33,.26],[.57,.22],[.73,.32],[.81,.56],[.70,.75],[.24,.69],[.12,.49],[.15,.28],[.89,.23]]
+const mobile=[[.19,.23],[.53,.23],[.82,.24],[.82,.40],[.83,.59],[.50,.80],[.17,.77],[.16,.59],[.16,.41]]
+const radii=[25,34,25,31,25,29,23,24,21]
 const media='/media/'
 const reduced=matchMedia('(prefers-reduced-motion: reduce)')
 const readPlanet=()=>new URLSearchParams(location.search).get('planet')
@@ -130,7 +130,7 @@ export function Galaxy({theme,setTheme}){
         <div className="solar-canvas" ref={scene} aria-hidden="true"/>
         <div className="solar-sun" style={{left:center[0]*100+'%',top:center[1]*100+'%'}} aria-hidden="true"><span/></div>
         <span className="sun-name mono" style={{left:center[0]*100+'%',top:center[1]*100+'%'}}>Enkhmend</span>
-        {items.map((item,i)=><button key={item.id} className="planet-button" type="button" data-active={focused===i} data-ring={i===1||i===7} style={{left:positions[i][0]*100+'%',top:positions[i][1]*100+'%','--planet-color':item.color,'--planet-size':(compact?radii[i]*1.28:radii[i]*2)+'px'}} aria-label={item.title} onPointerEnter={e=>{if(e.pointerType==='mouse')setFocused(i)}} onPointerLeave={e=>{if(e.pointerType==='mouse')setFocused(null)}} onFocus={()=>setFocused(i)} onBlur={()=>{if(tapped===null)setFocused(null)}} onClick={e=>enter(i,e)}>
+        {items.map((item,i)=><button key={item.id} className="planet-button" type="button" data-active={focused===i} data-ring={i===1||i===6} style={{left:positions[i][0]*100+'%',top:positions[i][1]*100+'%','--planet-color':item.color,'--planet-size':(compact?radii[i]*1.28:radii[i]*2)+'px'}} aria-label={item.title} onPointerEnter={e=>{if(e.pointerType==='mouse')setFocused(i)}} onPointerLeave={e=>{if(e.pointerType==='mouse')setFocused(null)}} onFocus={()=>setFocused(i)} onBlur={()=>{if(tapped===null)setFocused(null)}} onClick={e=>enter(i,e)}>
           <span className="planet-ball" data-webgl={ready} aria-hidden="true"/><span className="planet-caption"><small>{String(i+1).padStart(2,'0')}</small>{item.title}</span>
         </button>)}
       </div>

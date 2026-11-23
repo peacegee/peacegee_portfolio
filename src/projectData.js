@@ -32,7 +32,6 @@ export const projects = [
 ]
 
 export const credentials = [
-  { id: 'student-project-competition', title: 'Student Project Competition', date: '2026', text: 'Team Waffle took first place with Pyramid at UFE’s Student Project Competition on March 26, 2026.', image: 'competition.webp' },
   { id: 'smart-recycling-app-m-bank-competition', title: 'Smart Recycling App · M Bank Competition', date: '2025', text: 'First place for a student app project focused on recycling.', image: 'recycle.webp' },
   { id: 'national-programming-olympiad', title: 'National Programming Olympiad', date: '2025', certificate: true, text: 'Represented the University of Finance and Economics at the 33rd National Programming Olympiad.', image: 'olympiad.webp' },
   { id: 'accelerated-coding-course', title: 'Accelerated Coding Course', date: '2024', certificate: true, text: 'Completed a one-year program at IO Institute and the University of Finance and Economics.', image: 'coding.webp' },
