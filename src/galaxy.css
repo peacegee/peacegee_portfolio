@@ -4,7 +4,7 @@
 [data-theme=day] .solar-sky{filter:grayscale(.25) invert(.88) sepia(.12);opacity:.42}
 .solar-heading{position:absolute;top:clamp(19px,4vh,50px);left:5vw;z-index:3;pointer-events:none}
 .solar-heading .mono{color:var(--sub);margin-bottom:9px}
-.solar-heading h2{font:400 clamp(2.15rem,5.25vw,5.6rem)/.92 Georgia,serif;letter-spacing:-.06em}
+.solar-heading h2{font:400 clamp(2.15rem,5.25vw,5.6rem)/.92 Georgia,"Times New Roman",serif;letter-spacing:-.06em}
 .solar-map,.solar-transform,.solar-orbits,.solar-canvas{position:absolute;inset:0;width:100%;height:100%}
 .solar-map{cursor:grab;touch-action:pan-y}.solar-map:active{cursor:grabbing}
 .solar-orbits{pointer-events:none;overflow:visible;z-index:-1}.solar-orbits ellipse{fill:none;stroke:var(--orbit);stroke-width:1;vector-effect:non-scaling-stroke;transition:stroke .35s}
@@ -36,9 +36,9 @@
 .planet-feature img{position:absolute;inset:0;width:100%;height:100%;z-index:-2;object-fit:cover;object-position:center 44%}
 .planet-feature img.feature-document,.planet-feature img[src$=".svg"]{object-fit:contain;padding:4vh 10vw 18vh;background:#152631}
 .planet-feature:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#0a171fee,transparent 70%)}
-.planet-intro{padding:45px 7vw 8vh}.planet-intro h1{color:inherit;text-transform:none;font:400 clamp(2.9rem,8.8vw,9rem)/.9 Georgia,serif;letter-spacing:-.065em;width:auto;margin:12px 0 0;overflow-wrap:anywhere}
+.planet-intro{padding:45px 7vw 8vh}.planet-intro h1{color:inherit;text-transform:none;font:400 clamp(2.9rem,8.8vw,9rem)/.9 Georgia,"Times New Roman",serif;letter-spacing:-.065em;width:auto;margin:12px 0 0;overflow-wrap:anywhere}
 .planet-editorial{width:min(86vw,900px);margin:auto;padding:45px 0 100px;display:grid;gap:24px}
-.planet-editorial h2{font:400 clamp(1.65rem,4vw,3rem) Georgia,serif;margin-bottom:9px}.planet-editorial p{line-height:1.65;color:var(--muted)}
+.planet-editorial h2{font:400 clamp(1.65rem,4vw,3rem) Georgia,"Times New Roman",serif;margin-bottom:9px}.planet-editorial p{line-height:1.65;color:var(--muted)}
 .planet-editorial a,.planet-editorial button{justify-self:start;border:1px solid var(--line);padding:9px 13px;background:transparent;color:var(--ink);font-weight:650}
 .planet-flight{position:fixed;z-index:55;pointer-events:none;inset:0;background:#091721;clip-path:circle(2.6vmax at var(--fx) var(--fy));animation:travel-in .72s cubic-bezier(.64,.03,.28,1) both}
 .planet-flight img{width:100%;height:100%;object-fit:cover;animation:travel-image .72s ease both}
@@ -63,3 +63,17 @@
 .solar-preview button{margin-top:6px;background:transparent;border:1px solid #afc5c8;color:inherit;padding:4px 7px;font-size:.73rem}
 @media(max-height:765px){.solar-track{min-height:calc(max(570px,100svh - 62px) + 105svh)}.solar-section{min-height:max(570px,calc(100svh - 62px))}}
 @media(prefers-reduced-motion:reduce){.solar-track{min-height:0}.solar-section{position:relative;top:0}.planet-ball,.planet-caption{transition:none}}
+
+.solar-instruction{width:min(30vw,340px)}
+.solar-preview{width:min(32vw,385px)}
+.solar-preview img{flex:none}
+.planet-caption{overflow-wrap:anywhere}
+@media(max-width:720px){
+  .solar-instruction{width:92vw;bottom:45px}
+  .solar-preview{width:min(385px,92vw);bottom:76px}
+}
+@media(max-width:520px){
+  .solar-track,.solar-section{scroll-margin-top:80px}
+  .solar-section{top:80px}
+}
+@media(max-width:520px) and (prefers-reduced-motion:reduce){.solar-section{top:0}}

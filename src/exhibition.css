@@ -10,7 +10,7 @@
 .exhibit-sphere[data-ring=true]::after{content:'';position:absolute;inset:36% -31%;border:6px double #dbc39ab3;border-radius:50%;transform:rotate(-22deg)}
 .exhibit-intro{align-self:center;padding:clamp(23px,5.8vw,90px);max-width:900px}
 .exhibit-intro>.mono{color:var(--muted)}
-.exhibit-intro h1{width:auto;color:inherit;text-transform:none;font:400 clamp(2.55rem,6vw,7rem)/.91 Georgia,serif;letter-spacing:-.067em;overflow-wrap:anywhere;margin:12px 0 21px}
+.exhibit-intro h1{width:auto;color:inherit;text-transform:none;font:400 clamp(2.55rem,6vw,7rem)/.91 Georgia,"Times New Roman",serif;letter-spacing:-.067em;overflow-wrap:anywhere;margin:12px 0 21px}
 .exhibit-lead{font-size:clamp(1rem,1.6vw,1.4rem);line-height:1.35}
 .exhibit-context{color:var(--muted);line-height:1.5;margin-top:10px}
 .exhibit-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:18px}
@@ -19,7 +19,7 @@
 .exhibit-actions :is(a,button):hover,.exhibit-technologies button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
 .exhibit-body{width:min(86%,1050px);margin:auto;padding:clamp(55px,9vw,130px) 0}
 .exhibit-chapter{padding:clamp(25px,5vw,58px) 0;border-top:1px solid var(--line)}
-.exhibit-chapter h2{font:400 clamp(2rem,5vw,4.8rem)/.93 Georgia,serif;letter-spacing:-.055em;margin-bottom:19px}
+.exhibit-chapter h2{font:400 clamp(2rem,5vw,4.8rem)/.93 Georgia,"Times New Roman",serif;letter-spacing:-.055em;margin-bottom:19px}
 .exhibit-chapter p,.exhibit-tech-info dd{color:var(--muted);line-height:1.55}
 .exhibit-flow,.exhibit-technologies{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
 .exhibit-flow button{position:relative;display:flex;align-items:center;gap:9px;padding:12px 13px;border:0;border-bottom:1px solid var(--line);color:var(--ink);background:none;font:inherit;text-align:left;transition:border-color .3s}
@@ -50,3 +50,12 @@
 .exhibit-sphere{animation:portrait-breathe 8s ease-in-out infinite}
 @keyframes portrait-breathe{50%{filter:brightness(1.1);transform:rotate(1.2deg)}}
 @media(prefers-reduced-motion:reduce){.exhibit-sphere{animation:none}}
+
+.exhibit-intro,.exhibit-tech-info>div{min-width:0}
+.exhibit-chapter h2,.exhibit-actions,.exhibit-tech-info{overflow-wrap:anywhere}
+.exhibit-flow button span,.exhibit-actions button img{flex:none}
+.exhibit-lightbox form{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.exhibit-lightbox form button{margin-bottom:0}
+@media(max-width:400px){
+  .exhibit-intro h1{font-size:clamp(2rem,10vw,2.55rem)}
+}

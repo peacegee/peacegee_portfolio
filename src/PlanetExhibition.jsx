@@ -1,4 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react'
+import {LanguageSwitcher, useLanguage} from './Language.jsx'
+import {mongolianExhibitions} from './exhibitions.mn.js'
 import {exhibitions} from './exhibitionData.js'
 import './exhibition.css'
 import {mountPortrait} from './vendor/galaxy3d.js'
@@ -25,7 +27,18 @@ function Portrait({color,index}){
 }
 
 export function PlanetExhibition({project,index,total,theme,setTheme,surface,heading,back,navigate}){
-  const data=exhibitions[index]
+  const {language,t}=useLanguage()
+  const original=exhibitions[project.id]
+  const localized=language==='mn' ? mongolianExhibitions[project.id] : null
+  const data=localized ? {
+    ...original,
+    ...localized,
+    technologies: original.technologies?.map((item,i)=>({
+      ...item,
+      ...localized.technologies[i],
+      code: item.code && {...item.code,title:localized.technologies[i].codeTitle},
+    })),
+  } : original
   const [node,setNode]=useState(0)
   const [technology,setTechnology]=useState(0)
   const [example,setExample]=useState(0)
@@ -48,63 +61,63 @@ export function PlanetExhibition({project,index,total,theme,setTheme,surface,hea
   },[surface])
 
   return <article className="planet-page exhibit-page" ref={surface} aria-labelledby="planet-heading" style={{'--feature-color':project.color}} onKeyDown={event=>{if(event.key==='Escape'&&!zoom.current?.open)back()}}>
-    <nav className="planet-page-nav" aria-label="Exhibition navigation">
-      <button onClick={back}>← Back to Galaxy</button>
-      <div><button onClick={()=>navigate((index+total-1)%total,true)}>Previous</button><button onClick={()=>navigate((index+1)%total,true)}>Next</button><button onClick={()=>setTheme(theme==='night'?'day':'night')}>{theme==='night'?'Day mode':'Night mode'}</button></div>
+    <nav className="planet-page-nav" aria-label={t('exhibitionNav')}>
+      <button onClick={back}>← {t('back')}</button>
+      <div><button onClick={()=>navigate((index+total-1)%total,true)}>{t('previous')}</button><button onClick={()=>navigate((index+1)%total,true)}>{t('next')}</button><button onClick={()=>setTheme(theme==='night'?'day':'night')}>{t(theme==='night'?'day':'night')}</button><LanguageSwitcher /></div>
     </nav>
     <div className="exhibit-opening">
-      <div className="exhibit-stage"><Portrait color={project.color} index={index}/><p className="mono">Planet {String(index+1).padStart(2,'0')} / {total}</p></div>
+      <div className="exhibit-stage"><Portrait color={project.color} index={index}/><p className="mono">{t('planet')} {String(index+1).padStart(2,'0')} / {total}</p></div>
       <div className="exhibit-intro">
         <p className="mono">{project.category}</p>
         <h1 ref={heading} tabIndex="-1" id="planet-heading">{project.title}</h1>
         <p className="exhibit-lead">{project.description}</p>
         {data.context!==project.description&&<p className="exhibit-context">{data.context}</p>}
         <div className="exhibit-actions">
-          {project.url&&(project.url.startsWith('#')?<button type="button" onClick={back}>Return to portfolio</button>:<a href={project.url} target="_blank" rel="noopener noreferrer">{project.action}</a>)}
-          {asset&&<button onClick={()=>zoom.current.showModal()}><img src={asset} alt=""/><span>{project.certificate?'View certificate':'Enlarge preview'}</span></button>}
+          {project.url&&(project.url.startsWith('#')?<button type="button" onClick={back}>{t('portfolioReturn')}</button>:<a href={project.url} target="_blank" rel="noopener noreferrer">{project.action}</a>)}
+          {asset&&<button onClick={()=>zoom.current.showModal()}><img src={asset} alt=""/><span>{t(project.certificate?'certificate':'enlarge')}</span></button>}
         </div>
       </div>
     </div>
     <div className="exhibit-body">
-      {project.notes&&<section className="exhibit-chapter exhibit-notes"><h2>{project.notesTitle||'Design notes'}</h2><p>{project.notes}</p></section>}
+      {project.notes&&<section className="exhibit-chapter exhibit-notes"><h2>{project.notesTitle||t('designNotes')}</h2><p>{project.notes}</p></section>}
       <section className="exhibit-chapter">
-        <h2>{project.date?'Milestones':project.theme==='research'?'Conference record':'How it works'}</h2>
-        <div className="exhibit-flow" aria-label="Explore the sequence">
-          {data.flow.map((item,i)=><button key={item.name} onClick={()=>setNode(i)} aria-pressed={node===i} data-reached={i<=node}><span aria-hidden="true"/>{item.name}</button>)}
+        <h2>{t(project.date?'milestones':project.theme==='research'?'conferenceRecord':'how')}</h2>
+        <div className="exhibit-flow" aria-label={t('sequence')}>
+          {data.flow.map((item,i)=><button key={i} onClick={()=>setNode(i)} aria-pressed={node===i} data-reached={i<=node}><span aria-hidden="true"/>{item.name}</button>)}
         </div>
         <p className="exhibit-explanation" aria-live="polite">{data.flow[node].explanation}</p>
       </section>
       {!!data.technologies?.length&&<section className="exhibit-chapter">
-        <h2>Technology in use</h2>
-        <div className="exhibit-technologies" aria-label="Technologies">
+        <h2>{t('technology')}</h2>
+        <div className="exhibit-technologies" aria-label={t('technologies')}>
           {data.technologies.map((item,i)=><button key={item.name} onClick={()=>{setTechnology(i);if(item.code)setExample(examples.indexOf(item.code))}} aria-pressed={technology===i}>{item.name}</button>)}
         </div>
         <dl className="exhibit-tech-info" aria-live="polite">
-          <div><dt>How it’s used</dt><dd>{activeTechnology.use}</dd></div>
-          <div><dt>Why it fits</dt><dd>{activeTechnology.reason}</dd></div>
-          <div><dt>What it supports</dt><dd>{activeTechnology.feature}</dd></div>
+          <div><dt>{t('techUse')}</dt><dd>{activeTechnology.use}</dd></div>
+          <div><dt>{t('techReason')}</dt><dd>{activeTechnology.reason}</dd></div>
+          <div><dt>{t('techFeature')}</dt><dd>{activeTechnology.feature}</dd></div>
         </dl>
       </section>}
       {code&&<section className="exhibit-chapter exhibit-code">
-        <h2>Inside the code</h2>
-        <div className="exhibit-technologies" aria-label="Source excerpts">
-          {examples.map((item,i)=><button key={item.title} onClick={()=>setExample(i)} aria-pressed={example===i}>{item.title}</button>)}
+        <h2>{t('code')}</h2>
+        <div className="exhibit-technologies" aria-label={t('excerpts')}>
+          {examples.map((item,i)=><button key={i} onClick={()=>setExample(i)} aria-pressed={example===i}>{item.title}</button>)}
         </div>
         <p className="mono code-source">{code.source}</p>
         <Code source={code.body}/>
         <p>{data.technologies.find(item=>item.code===code)?.use}</p>
       </section>}
       {asset&&<section className="exhibit-chapter">
-        <h2>{project.certificate?'Supporting document':'Project visual'}</h2>
+        <h2>{t(project.certificate?'supporting':'visual')}</h2>
         <figure className="exhibit-gallery">
-          <button onClick={()=>zoom.current.showModal()} aria-label={project.certificate?'Enlarge certificate':'Enlarge project visual'}><img src={asset} loading="lazy" alt={data.credit||project.title}/></button>
+          <button onClick={()=>zoom.current.showModal()} aria-label={t(project.certificate?'enlargeCertificate':'enlargeVisual')}><img src={asset} loading="lazy" alt={data.alt||data.credit||project.title}/></button>
           <figcaption>{data.credit}</figcaption>
         </figure>
       </section>}
     </div>
     {asset&&<dialog ref={zoom} className="exhibit-lightbox" aria-label={project.title} onClick={event=>{if(event.target===event.currentTarget)event.currentTarget.close()}} onKeyDown={event=>{if(event.key==='Escape')event.stopPropagation()}}>
-      <form method="dialog"><button aria-label="Close enlarged visual">Close</button></form>
-      <img src={asset} alt={data.credit||project.title}/>
+      <form method="dialog"><button aria-label={t('closeVisual')}>{t('close')}</button><LanguageSwitcher /></form>
+      <img src={asset} alt={data.alt||data.credit||project.title}/>
     </dialog>}
   </article>
 }

@@ -1,5 +1,6 @@
 import React, {useEffect,useRef,useState} from 'react'
 import './world.css'
+import {useLanguage} from './Language.jsx'
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)')
 const initialHour = new Date().getHours()
@@ -98,6 +99,7 @@ export function Atmosphere({theme}) {
 }
 
 export function Sound({theme}){
+  const {t}=useLanguage()
   const audio=useRef(null)
   const [playing,setPlaying]=useState(false)
   const [volume,setVolume]=useState(.3)
@@ -138,5 +140,5 @@ export function Sound({theme}){
       await audio.current.ctx.resume();setPlaying(true)
     }catch{setPlaying(false)}
   }
-  return <div className="sound"><button type="button" onClick={toggle} aria-pressed={playing}>{playing?'Mute ambience':'Play ambience'}</button><input aria-label="Ambience volume" type="range" min="0" max="1" step=".01" value={volume} onChange={e=>setVolume(Number(e.target.value))}/></div>
+  return <div className="sound"><button type="button" onClick={toggle} aria-pressed={playing}>{t(playing?'mute':'play')}</button><input aria-label={t('volume')} type="range" min="0" max="1" step=".01" value={volume} onChange={e=>setVolume(Number(e.target.value))}/></div>
 }

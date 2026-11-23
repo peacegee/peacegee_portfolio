@@ -4,6 +4,9 @@ import './galaxy.css'
 import {PlanetExhibition} from './PlanetExhibition.jsx'
 import {attachGalaxyMotion} from './galaxyMotion.js'
 import {mount} from './vendor/galaxy3d.js'
+import {useLanguage} from './Language.jsx'
+import {projects, credentials} from './projectData.js'
+import {mongolianProjects} from './projects.mn.js'
 
 const palettes=['#cc825d','#d5b682','#619b88','#608cae','#8caebd','#b47e54','#6caa86','#9d8268','#92b4c9','#c0a26a']
 const desktop=[[.33,.26],[.57,.22],[.73,.32],[.81,.56],[.70,.75],[.47,.79],[.24,.69],[.12,.49],[.15,.28],[.89,.23]]
@@ -11,12 +14,22 @@ const mobile=[[.19,.23],[.53,.23],[.82,.24],[.82,.40],[.83,.59],[.83,.76],[.50,.
 const radii=[25,34,25,31,25,25,29,23,24,21]
 const media='/media/'
 const reduced=matchMedia('(prefers-reduced-motion: reduce)')
-const idFor=title=>title.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')
 const readPlanet=()=>new URLSearchParams(location.search).get('planet')
-const fallbackImages={'Coding Course Registration':'codespring.svg','Academic Research':'data.webp','Personal Portfolio':'portfolio-screen.webp'}
 
-export function Galaxy({theme,projects,credentials,setTheme}){
-  const items=[...projects.map(p=>({...p,preview:p.image||fallbackImages[p.title]})),...credentials.map(p=>({...p,description:p.text,category:p.date+' · Achievement',preview:p.image,certificate:/olympiad|coding course/i.test(p.title)}))].map((p,i)=>({...p,id:idFor(p.title),color:palettes[i]}))
+const records = [...projects, ...credentials].map((project, index) => ({
+  ...project,
+  color: palettes[index],
+  preview: project.preview || project.image,
+}))
+
+export function Galaxy({theme,setTheme}){
+  const {language,t} = useLanguage()
+  const items = records.map(record => {
+    const project = language === 'mn' ? {...record, ...mongolianProjects[record.id]} : record
+    return project.date
+      ? {...project, description: project.text, category: project.date+' · '+t('achievement')}
+      : project
+  })
   const [focused,setFocused]=useState(null)
   const [active,setActive]=useState(()=>readPlanet())
   const [ready,setReady]=useState(false)
@@ -108,7 +121,7 @@ export function Galaxy({theme,projects,credentials,setTheme}){
   const preview=focused===null?null:items[focused]
   return <div className="solar-track" id="work" ref={track}><section className="solar-section" aria-labelledby="work-title" data-theme={theme} data-focused={focused!==null} data-travel={Boolean(flight&&!flight.returning)}>
     <div className="solar-sky" aria-hidden="true"/>
-    <div className="solar-heading"><p className="mono">Enkhmend Gantumur</p><h2 id="work-title">Personal Solar System</h2></div>
+    <div className="solar-heading"><p className="mono">Enkhmend Gantumur</p><h2 id="work-title">{t('solarTitle')}</h2></div>
     <div className="solar-map" onPointerDown={e=>{if(e.target.closest('button,a')||e.pointerType==='touch')return;drag.current={x:e.clientX,y:e.clientY,...{originX:offset.x,originY:offset.y}};e.currentTarget.setPointerCapture(e.pointerId)}} onPointerMove={e=>{if(!drag.current)return;const d=drag.current;setOffset({x:Math.max(-48,Math.min(48,d.originX+(e.clientX-d.x)*.36)),y:Math.max(-34,Math.min(34,d.originY+(e.clientY-d.y)*.36))})}} onPointerUp={()=>drag.current=null} onPointerCancel={()=>drag.current=null}>
       <div className="solar-transform" style={{transform:`translate(${offset.x}px,${offset.y}px) scale(${zoom})`}}>
         <svg className="solar-orbits" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
@@ -122,9 +135,9 @@ export function Galaxy({theme,projects,credentials,setTheme}){
         </button>)}
       </div>
     </div>
-    {preview&&<div className="solar-preview">{preview.preview&&<img src={media+preview.preview} alt=""/>}<div><strong>{preview.title}</strong><p>{preview.description}</p>{tapped!==null&&<button type="button" onClick={()=>enter(tapped)}>Enter planet</button>}</div></div>}
-    <div className="solar-tools"><button onClick={()=>setZoom(zoom===1?1.1:1)}>{zoom===1?'Zoom in':'Zoom out'}</button><button onClick={()=>{setZoom(1);setOffset({x:0,y:0})}}>Reset view</button></div>
-    <p className="solar-instruction">Scroll to orbit · Select a planet to explore</p>
+    {preview&&<div className="solar-preview">{preview.preview&&<img src={media+preview.preview} alt=""/>}<div><strong>{preview.title}</strong><p>{preview.description}</p>{tapped!==null&&<button type="button" onClick={()=>enter(tapped)}>{t('enter')}</button>}</div></div>}
+    <div className="solar-tools"><button onClick={()=>setZoom(zoom===1?1.1:1)}>{t(zoom===1?'zoomIn':'zoomOut')}</button><button onClick={()=>{setZoom(1);setOffset({x:0,y:0})}}>{t('reset')}</button></div>
+    <p className="solar-instruction">{t('instruction')}</p>
     {flight&&createPortal(<div className={'planet-flight exhibit-flight'+(flight.returning?' returning':'')} style={{'--fx':flight.x+'%','--fy':flight.y+'%','--flight-color':items[flight.index].color}} aria-hidden="true"><span className="flight-globe"/>{items[flight.index].preview&&<img src={media+items[flight.index].preview} alt=""/>}</div>,document.body)}
     {project&&createPortal(<PlanetExhibition key={project.id} project={project} index={selected} total={items.length} theme={theme} setTheme={setTheme} surface={surface} heading={heading} back={back} navigate={navigate}/>,document.body)}
   </section></div>
