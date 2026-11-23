@@ -29,6 +29,13 @@ export const projects = [
     notes: 'The site combines an editorial layout with interactive 3D navigation, full-screen project exhibitions and responsive styling.',
     action: 'Explore the portfolio', url: '#top',
   },
+  { id: 'ism-digital-museum',
+    title: "ISM Дижитал музей",
+    category: 'Department digital exhibition',
+    description: 'A digital museum showcasing the Information Systems Management (ISM) department, student work, and faculty information.',
+    action: 'Visit the museum',
+    url: 'https://is-mmuseum-xh2t.vercel.app/',
+  },
 ]
 
 export const credentials = [

@@ -22,7 +22,7 @@ function Portrait({color,index}){
   },[color,index])
   return <div className="exhibit-portrait" ref={host} aria-hidden="true">
     <span className="portrait-orbit"/>
-    {!ready&&<span className="exhibit-sphere" data-ring={index===1||index===6}/>}
+    {!ready&&<span className="exhibit-sphere" data-ring={index===1||index===7}/>}
   </div>
 }
 
@@ -81,7 +81,7 @@ export function PlanetExhibition({project,index,total,theme,setTheme,surface,hea
     <div className="exhibit-body">
       {project.notes&&<section className="exhibit-chapter exhibit-notes"><h2>{project.notesTitle||t('designNotes')}</h2><p>{project.notes}</p></section>}
       <section className="exhibit-chapter">
-        <h2>{t(project.date?'milestones':project.theme==='research'?'conferenceRecord':'how')}</h2>
+        <h2>{data.flowTitle||t(project.date?'milestones':project.theme==='research'?'conferenceRecord':'how')}</h2>
         <div className="exhibit-flow" aria-label={t('sequence')}>
           {data.flow.map((item,i)=><button key={i} onClick={()=>setNode(i)} aria-pressed={node===i} data-reached={i<=node}><span aria-hidden="true"/>{item.name}</button>)}
         </div>

@@ -40,6 +40,15 @@ export const exhibitions = {
     ],
     credit:'Portfolio screenshot.',
   },
+  'ism-digital-museum': {
+    flowTitle: "Explore the museum",
+    context: 'Start with the department overview, then explore what students have made and get to know the faculty.',
+    flow:[
+      step('ISM department','Read the introduction to the Information Systems Management department.'),
+      step('Student work','Explore projects created by students.'),
+      step('Faculty','Find information about the department?s faculty.'),
+    ],
+  },
   'smart-recycling-app-m-bank-competition': {context:'An app project that approached the problem of waste recycling. It received first place at the 2025 M Bank competition.',flow:[step('Problem','Waste recycling.'),step('Response','A student app project.'),step('Result','First place at the M Bank competition.')],credit:'Thematic illustration inspired by recycling.'},
   'national-programming-olympiad': {context:'I represented the University of Finance and Economics at the 33rd National Programming Olympiad.',flow:[step('University','University of Finance and Economics.'),step('Event','33rd National Programming Olympiad.'),step('Record','2025 participation certificate.')],credit:'Olympiad certificate.'},
   'accelerated-coding-course': {context:'I completed the one-year accelerated coding program at IO Institute and the University of Finance and Economics.',flow:[step('Program','Accelerated Coding Course.'),step('Duration','One year.'),step('Completion','Recorded in the 2024 certificate.')],credit:'Course certificate.'},
