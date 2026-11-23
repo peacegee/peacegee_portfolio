@@ -49,3 +49,8 @@
   .header nav{display:grid;grid-template-columns:repeat(3,auto);justify-items:end}
   .header .mode-controls{grid-column:1/-1}
 }
+
+.hero-copy h1{font-size:clamp(4rem,10vw,10rem);line-height:.85;overflow-wrap:break-word}
+@media(max-width:580px){
+  .hero-copy h1{font-size:clamp(2.9rem,11.5vw,4.25rem)}
+}
